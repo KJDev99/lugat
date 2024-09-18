@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.section {
+  width: 30%;
+  text-align: left; /* So'zlar ro'yxatini chapga joylashtirish */
+  border: 1px solid black;
+  padding: 10px;
+  box-sizing: border-box; /* Padding va borderni elementning umumiy o'lchamiga qo'shadi */
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+h2 {
+  color: #333;
+}
+
+/* Keyingi so'z tugmasini o'rtaga joylashtirish */
+#nextWordBtn {
+  display: block;
+  margin: 20px auto;
+}
+
+/* Ro'yxatlarni ko'rsatish paytida */
+#nounList,
+#adjectiveList,
+#verbList {
+  text-align: left; /* Ro'yxatdagi so'zlarni chapga joylashtirish */
+}
+
+/* Media query: Ekran o'lchamlari kichik bo'lganda */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Flex containerni ustun ko'rinishida joylashtirish */
+  }
+
+  .section {
+    width: 100%; /* Sektsiyalar kengligini 100% qilish */
+    margin-bottom: 20px; /* Sektsiyalar orasida bo'sh joy qoldirish */
+  }
+
+  /* Keyingi so'z tugmasini o'rtaga joylashtirish */
+  #nextWordBtn {
+    margin-top: 20px;
+  }
+}

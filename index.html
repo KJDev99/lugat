@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lug'at O'yini</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Lug'at O'yini</h1>
+      <div>
+        <h3>So'zlarni qanday tartibda so'rashni xohlaysiz?</h3>
+        <button id="sequentialBtn">Tartib bilan</button>
+        <button id="randomBtn">Randomda</button>
+        <button id="showAllListsBtn">
+          Barcha ro'yxatlarni ko'rsat/yashirish
+        </button>
+      </div>
+      <div class="container">
+        <div class="section">
+          <h2>Otlar</h2>
+          <div id="nounWord"></div>
+          <button id="nounTranslationBtn">Tarjimani ko'rsat</button>
+          <div id="nounTranslation"></div>
+          <div id="nounList" style="display: none"></div>
+          <!-- Ro'yxat uchun konteyner -->
+        </div>
+        <div class="section">
+          <h2>Sifatlar</h2>
+          <div id="adjectiveWord"></div>
+          <button id="adjectiveTranslationBtn">Tarjimani ko'rsat</button>
+          <div id="adjectiveTranslation"></div>
+          <div id="adjectiveList" style="display: none"></div>
+          <!-- Ro'yxat uchun konteyner -->
+        </div>
+        <div class="section">
+          <h2>Fe'llar</h2>
+          <div id="verbWord"></div>
+          <button id="verbTranslationBtn">Tarjimani ko'rsat</button>
+          <div id="verbTranslation"></div>
+          <div id="verbList" style="display: none"></div>
+          <!-- Ro'yxat uchun konteyner -->
+        </div>
+      </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
