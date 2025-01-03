@@ -1,5 +1,5 @@
 const nouns = [
-  // { english: "people", uzbek: "odamlar" },
+  { english: "people", uzbek: "odamlar" },
   // { english: "history", uzbek: "tarix" },
   // { english: "way", uzbek: "yo'l" },
   // { english: "art", uzbek: "sanat" },
