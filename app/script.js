@@ -1,13 +1,11 @@
 let isSequential = true;
 let currentIndex = 0;
 
-// Random indekslarni saqlash uchun o'zgaruvchilar
 let randomSimplesIndex = 0;
 let randomNounIndex = 0;
 let randomAdjectiveIndex = 0;
 let randomVerbIndex = 0;
 
-// HTML elementlar
 const simpleWordElement = document.getElementById("simpleWord");
 const simpleTranslationElement = document.getElementById("simpleTranslation");
 const simpleTranslationBtn = document.getElementById("simpleTranslationBtn");
@@ -34,11 +32,10 @@ const verbListElement = document.getElementById("verbList");
 
 const nextWordBtn = document.createElement("button");
 nextWordBtn.innerText = "Keyingi so'z";
-nextWordBtn.id = "nextWordBtn"; // ID qo'shildi
+nextWordBtn.id = "nextWordBtn";
 nextWordBtn.style.marginTop = "20px";
 document.body.appendChild(nextWordBtn);
 
-// Funksiya: So'zlarni ko'rsatish
 function showWords() {
   if (isSequential) {
     randomSimplesIndex = currentIndex;
@@ -71,7 +68,6 @@ function showWords() {
   verbTranslationElement.innerText = "";
 }
 
-// Tarjimalarni ko'rsatish tugmalari
 simpleTranslationBtn.addEventListener("click", () => {
   const index = currentIndex % simples.length;
   simpleTranslationElement.innerText = `Tarjima: ${simples[randomSimplesIndex].uzbek}`;
@@ -89,15 +85,13 @@ verbTranslationBtn.addEventListener("click", () => {
   verbTranslationElement.innerText = `Tarjima: ${verbs[randomVerbIndex].uzbek}`;
 });
 
-// Keyingi so'zga o'tish
 nextWordBtn.addEventListener("click", () => {
   if (isSequential) {
-    currentIndex = (currentIndex + 1) % nouns.length; // Tartib bo'yicha ketadi va oxirga yetganda qaytadi
+    currentIndex = (currentIndex + 1) % nouns.length;
   }
   showWords();
 });
 
-// Tugmalar: Tartib bilan yoki random tanlash
 document.getElementById("sequentialBtn").addEventListener("click", () => {
   isSequential = true;
   currentIndex = 0;
@@ -108,8 +102,6 @@ document.getElementById("randomBtn").addEventListener("click", () => {
   isSequential = false;
   showWords();
 });
-
-// Ro'yxatlarni ko'rsatish funksiyalari
 
 function showSimpleList() {
   simpleListElement.innerHTML = simples
@@ -170,3 +162,87 @@ document
   .addEventListener("click", toggleAllLists);
 
 showWords();
+
+const showRandomAllBtn = document.getElementById("showRandomAllBtn");
+const randomSimpleListElement = document.createElement("div");
+const randomNounListElement = document.createElement("div");
+const randomAdjectiveListElement = document.createElement("div");
+const randomVerbListElement = document.createElement("div");
+
+// Elementlarni stilizatsiya qilish
+[
+  randomSimpleListElement,
+  randomNounListElement,
+  randomAdjectiveListElement,
+  randomVerbListElement,
+].forEach((el) => {
+  el.style.display = "none";
+  el.style.margin = "10px 0";
+  el.style.padding = "10px";
+  el.style.border = "1px solid #ddd";
+  el.style.borderRadius = "5px";
+});
+
+// Elementlarni DOM-ga qo'shish
+simpleListElement.after(randomSimpleListElement);
+nounListElement.after(randomNounListElement);
+adjectiveListElement.after(randomAdjectiveListElement);
+verbListElement.after(randomVerbListElement);
+
+function showRandomAllLists() {
+  const shuffledSimples = [...simples].sort(() => Math.random() - 0.5);
+  randomSimpleListElement.innerHTML =
+    "<h3>Oddiy So'zlar (Aralash)</h3>" +
+    shuffledSimples
+      .map(
+        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
+      )
+      .join("");
+
+  const shuffledNouns = [...nouns].sort(() => Math.random() - 0.5);
+  randomNounListElement.innerHTML =
+    "<h3>Otlar (Aralash)</h3>" +
+    shuffledNouns
+      .map(
+        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
+      )
+      .join("");
+
+  const shuffledAdjectives = [...adjectives].sort(() => Math.random() - 0.5);
+  randomAdjectiveListElement.innerHTML =
+    "<h3>Sifatlar (Aralash)</h3>" +
+    shuffledAdjectives
+      .map(
+        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
+      )
+      .join("");
+
+  const shuffledVerbs = [...verbs].sort(() => Math.random() - 0.5);
+  randomVerbListElement.innerHTML =
+    "<h3>Fe'llar (Aralash)</h3>" +
+    shuffledVerbs
+      .map(
+        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
+      )
+      .join("");
+
+  randomSimpleListElement.style.display = "block";
+  randomNounListElement.style.display = "block";
+  randomAdjectiveListElement.style.display = "block";
+  randomVerbListElement.style.display = "block";
+}
+
+function toggleRandomAllLists() {
+  const isVisible = randomSimpleListElement.style.display === "block";
+
+  if (isVisible) {
+    randomSimpleListElement.style.display = "none";
+    randomNounListElement.style.display = "none";
+    randomAdjectiveListElement.style.display = "none";
+    randomVerbListElement.style.display = "none";
+  } else {
+    showRandomAllLists();
+  }
+}
+
+showRandomAllBtn.addEventListener("click", toggleRandomAllLists);
