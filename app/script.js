@@ -107,7 +107,9 @@ function showSimpleList() {
   simpleListElement.innerHTML = simples
     .map(
       (simple, index) =>
-        `<p>${index + 1}. ${simple.english} - ${simple.uzbek}</p>`
+        `<p><span>${index + 1}. ${simple.english}</span> <span>${
+          simple.uzbek
+        }</span></p>`
     )
     .join("");
   simpleListElement.style.display = "block";
@@ -115,7 +117,10 @@ function showSimpleList() {
 function showNounList() {
   nounListElement.innerHTML = nouns
     .map(
-      (noun, index) => `<p>${index + 1}. ${noun.english} - ${noun.uzbek}</p>`
+      (noun, index) =>
+        `<p> <span>${index + 1}. ${noun.english}</span> <span>${
+          noun.uzbek
+        }</span></p>`
     )
     .join("");
   nounListElement.style.display = "block";
@@ -123,7 +128,12 @@ function showNounList() {
 
 function showAdjectiveList() {
   adjectiveListElement.innerHTML = adjectives
-    .map((adj, index) => `<p>${index + 1}. ${adj.english} - ${adj.uzbek}</p>`)
+    .map(
+      (adj, index) =>
+        `<p> <span>${index + 1}. ${adj.english} </span> <span>${
+          adj.uzbek
+        }</span> </p>`
+    )
     .join("");
   adjectiveListElement.style.display = "block";
 }
@@ -131,7 +141,10 @@ function showAdjectiveList() {
 function showVerbList() {
   verbListElement.innerHTML = verbs
     .map(
-      (verb, index) => `<p>${index + 1}. ${verb.english} - ${verb.uzbek}</p>`
+      (verb, index) =>
+        `<p> <span>${index + 1}. ${verb.english}</span> <span>${
+          verb.uzbek
+        }</span> </p>`
     )
     .join("");
   verbListElement.style.display = "block";
@@ -169,7 +182,6 @@ const randomNounListElement = document.createElement("div");
 const randomAdjectiveListElement = document.createElement("div");
 const randomVerbListElement = document.createElement("div");
 
-// Elementlarni stilizatsiya qilish
 [
   randomSimpleListElement,
   randomNounListElement,
@@ -177,13 +189,10 @@ const randomVerbListElement = document.createElement("div");
   randomVerbListElement,
 ].forEach((el) => {
   el.style.display = "none";
-  el.style.margin = "10px 0";
-  el.style.padding = "10px";
-  el.style.border = "1px solid #ddd";
   el.style.borderRadius = "5px";
+  el.classList.add("List");
 });
 
-// Elementlarni DOM-ga qo'shish
 simpleListElement.after(randomSimpleListElement);
 nounListElement.after(randomNounListElement);
 adjectiveListElement.after(randomAdjectiveListElement);
@@ -191,40 +200,44 @@ verbListElement.after(randomVerbListElement);
 
 function showRandomAllLists() {
   const shuffledSimples = [...simples].sort(() => Math.random() - 0.5);
-  randomSimpleListElement.innerHTML =
-    "<h3>Oddiy So'zlar (Aralash)</h3>" +
-    shuffledSimples
-      .map(
-        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
-      )
-      .join("");
+  randomSimpleListElement.innerHTML = shuffledSimples
+    .map(
+      (word, index) =>
+        `<p><span>${index + 1}. ${word.english}</span> <span> ${
+          word.uzbek
+        } </span> </p>`
+    )
+    .join("");
 
   const shuffledNouns = [...nouns].sort(() => Math.random() - 0.5);
-  randomNounListElement.innerHTML =
-    "<h3>Otlar (Aralash)</h3>" +
-    shuffledNouns
-      .map(
-        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
-      )
-      .join("");
+  randomNounListElement.innerHTML = shuffledNouns
+    .map(
+      (word, index) =>
+        `<p><span>${index + 1}. ${word.english}</span> <span> ${
+          word.uzbek
+        } </span> </p>`
+    )
+    .join("");
 
   const shuffledAdjectives = [...adjectives].sort(() => Math.random() - 0.5);
-  randomAdjectiveListElement.innerHTML =
-    "<h3>Sifatlar (Aralash)</h3>" +
-    shuffledAdjectives
-      .map(
-        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
-      )
-      .join("");
+  randomAdjectiveListElement.innerHTML = shuffledAdjectives
+    .map(
+      (word, index) =>
+        `<p><span>${index + 1}. ${word.english}</span> <span> ${
+          word.uzbek
+        } </span> </p>`
+    )
+    .join("");
 
   const shuffledVerbs = [...verbs].sort(() => Math.random() - 0.5);
-  randomVerbListElement.innerHTML =
-    "<h3>Fe'llar (Aralash)</h3>" +
-    shuffledVerbs
-      .map(
-        (word, index) => `<p>${index + 1}. ${word.english} - ${word.uzbek}</p>`
-      )
-      .join("");
+  randomVerbListElement.innerHTML = shuffledVerbs
+    .map(
+      (word, index) =>
+        `<p><span>${index + 1}. ${word.english}</span> <span> ${
+          word.uzbek
+        } </span> </p>`
+    )
+    .join("");
 
   randomSimpleListElement.style.display = "block";
   randomNounListElement.style.display = "block";

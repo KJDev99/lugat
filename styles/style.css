@@ -60,3 +60,9 @@ h2 {
     margin-top: 20px;
   }
 }
+
+.List p {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  text-wrap: nowrap;
+}
